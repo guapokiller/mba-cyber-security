@@ -7,12 +7,36 @@ pipeline {
     //Fases do pipeline
     stages {
         
-       stage('Checkout') {
+       stage('build') {
             steps {
                 script {
-                    echo 'fazer checkout do projeto'
+                    echo 'fazendo o build do projeto'
+                    git branch: 'master', url: 'https://github.com/paulonill/exemplo-spring-mvc-thymeleaf.git'
                     sh "ls -la"
-                    sh "pwd"
+                }
+            }
+        }
+        
+       stage('unit-test') {
+            steps {
+                script {
+                    echo 'fazendo o test do projeto'
+                }
+            }
+        }
+        
+       stage('deploy to stage') {
+            steps {
+                script {
+                    echo 'fazendo o deploy to stage do projeto'
+                }
+            }
+        }
+        
+       stage('acceptance test') {
+            steps {
+                script {
+                    echo 'fazendo o acceptance test do projeto'
                 }
             }
         }
